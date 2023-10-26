@@ -14,10 +14,6 @@ public class HeroMover : MonoBehaviour
         _inputService = Game.InputService;
         _transform = transform;
         _characterController = GetComponent<CharacterController>();
-    }
-
-    private void Start()
-    {
         _camera = Camera.main;
     }
 
@@ -25,7 +21,7 @@ public class HeroMover : MonoBehaviour
     {
         Vector3 movementVector = Vector3.zero;
 
-        if (_inputService.Axis.sqrMagnitude > 0.00000001)
+        if (_inputService.Axis.sqrMagnitude > 0.0001f)
         {
             movementVector = _camera.transform.TransformDirection(_inputService.Axis);
 
