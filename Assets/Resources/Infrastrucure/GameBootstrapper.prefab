@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 215964881183190435}
   - component: {fileID: 6176532767344249082}
-  - component: {fileID: 5292965101159385204}
   m_Layer: 0
   m_Name: GameBootstrapper
   m_TagString: Untagged
@@ -45,15 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9756c5913a2f4a43b35cdb53973e8c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5292965101159385204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4611343802266006914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bcd4a382ebce314aad4e82f9438d72a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _loadingCurtain: {fileID: 0}

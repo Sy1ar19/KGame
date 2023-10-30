@@ -1,12 +1,15 @@
-using UnityEngine;
+using Assets.Scripts.Ifrastructure.Services;
+using Assets.Scripts.Ifrastructure.States;
 
-public class Game : MonoBehaviour
+namespace Assets.Scripts.Ifrastructure
 {
-    public static IInputService InputService;
-    public GameStateMachine StateMachine;
-
-    public Game(ICoroutineRunner coroutineRunner, LoadingCurtain loadingCurtain)
+    public class Game
     {
-        StateMachine = new GameStateMachine(new SceneLoader(coroutineRunner), loadingCurtain);
+        public GameStateMachine StateMachine;
+
+        public Game(ICoroutineRunner coroutineRunner, LoadingCurtain loadingCurtain)
+        {
+            StateMachine = new GameStateMachine(new SceneLoader(coroutineRunner), loadingCurtain, AllServices.Container);
+        }
     }
 }

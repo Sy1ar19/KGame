@@ -1,3 +1,4 @@
+using Assets.Scripts.Ifrastructure.Services;
 using UnityEngine;
 
 public class HeroMover : MonoBehaviour
@@ -11,7 +12,7 @@ public class HeroMover : MonoBehaviour
 
     private void Awake()
     {
-        _inputService = Game.InputService;
+        _inputService = AllServices.Container.Single<IInputService>();
         _transform = transform;
         _characterController = GetComponent<CharacterController>();
         _camera = Camera.main;

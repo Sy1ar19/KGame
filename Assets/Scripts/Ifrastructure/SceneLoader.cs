@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneLoader : MonoBehaviour, ICoroutineRunner
+public class SceneLoader : ICoroutineRunner
 {
     private readonly ICoroutineRunner _coroutineRunner;
 
@@ -29,5 +29,10 @@ public class SceneLoader : MonoBehaviour, ICoroutineRunner
         }
 
         onLoaded?.Invoke();
+    }
+
+    public Coroutine StartCoroutine(IEnumerator coroutine)
+    {
+        return _coroutineRunner.StartCoroutine(coroutine);
     }
 }
