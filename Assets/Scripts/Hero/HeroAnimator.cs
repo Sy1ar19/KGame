@@ -16,6 +16,6 @@ public class HeroAnimator : MonoBehaviour
     private void Update()
     {
         _animator.SetFloat(MoveHash, _characterController.velocity.magnitude, 0.1f, Time.deltaTime);
-        print(_characterController.velocity.magnitude);
+        // print(_characterController.velocity.magnitude);
     }
 }

@@ -5,12 +5,13 @@ namespace Assets.Scripts.Ifrastructure
 {
     public class GameBootStrapper : MonoBehaviour, ICoroutineRunner
     {
+        [SerializeField] private LoadingCurtain _loadingCurtainPrefab;
+        
         private Game _game;
-        [SerializeField] private LoadingCurtain _loadingCurtain;
 
         private void Awake()
         {
-            _game = new Game(this, _loadingCurtain);
+            _game = new Game(this, Instantiate(_loadingCurtainPrefab));
             _game.StateMachine.Enter<BootstrapState>();
 
             DontDestroyOnLoad(this);
