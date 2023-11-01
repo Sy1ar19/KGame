@@ -1,5 +1,6 @@
 using Assets.Scripts.Ifrastructure.AssetManagement;
 using Assets.Scripts.Ifrastructure.Services.PersistentProgress;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,16 +10,24 @@ namespace Assets.Scripts.Ifrastructure.Factory
     {
         private readonly IAssets _assets;
 
+        public event Action HeroCreated;
+
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
         public List<ISavedProgress> ProgressWriters { get; } = new List<ISavedProgress>();
+
+        public GameObject HeroGameObject { get; private set; }
 
         public GameFactory(IAssets assets)
         {
             _assets = assets;
         }
 
-        public GameObject CreateHero(GameObject heroInitialPoint) => 
-            InstantiaterRegistered(AssetPath.HeroPath, heroInitialPoint.transform.position);
+        public GameObject CreateHero(GameObject heroInitialPoint)
+        {
+            HeroGameObject = InstantiaterRegistered(AssetPath.HeroPath, heroInitialPoint.transform.position);
+            HeroCreated?.Invoke();
+            return HeroGameObject;
+        }
 
         public void CreateHud() =>
             InstantiaterRegistered(AssetPath.HudPath);
